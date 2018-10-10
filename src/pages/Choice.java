@@ -10,11 +10,9 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import app.AppMenu;
 import app.elements.MenuItem;
 
-import test.World;
+public class Choice extends AppMenu {
 
-public class Pause extends AppMenu {
-
-	public Pause (int ID) {
+	public Choice (int ID) {
 		super (ID);
 	}
 
@@ -22,23 +20,22 @@ public class Pause extends AppMenu {
 	public void init (GameContainer container, StateBasedGame game) {
 		super.initSize (container, game, 600, 400);
 		super.init (container, game);
-		this.setTitle ("Pause");
-		this.setSubtitle ("Le temps de prendre un goûter");
+		this.setSubtitle ("Sans sous-titre");
 		this.setMenu (Arrays.asList (new MenuItem [] {
-			new MenuItem ("Retour") {
+			new MenuItem ("Test") {
 				public void itemSelected () {
-					((World) game.getState (3)).setState (2);
+					((test.World) game.getState (3)).setState (0);
 					game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
-			new MenuItem ("Abandon") {
+			new MenuItem ("Retour") {
 				public void itemSelected () {
-					((World) game.getState (3)).setState (0);
-					game.enterState (1, new FadeOutTransition (), new FadeInTransition ());
+					game.enterState (0, new FadeOutTransition (), new FadeInTransition ());
 				}
 			}
 		}));
-		this.setHint ("HAVE A SNACK");
+		this.setTitle ("Choix");
+		this.setHint ("SELECT A GAME");
 	}
 
 }

@@ -3,14 +3,13 @@ package pages;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.EmptyImageData;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import app.AppGame;
-import app.AppInput;
 import app.AppPage;
 
 public class Welcome extends AppPage {
@@ -68,15 +67,11 @@ public class Welcome extends AppPage {
 	@Override
 	public void update (GameContainer container, StateBasedGame game, int  delta) {
 		super.update (container, game, delta);
-		AppInput appInput = (AppInput) container.getInput ();
-		AppGame appGame = (AppGame) game;
-		if (appInput.isKeyDown (AppInput.KEY_ESCAPE)) {
+		Input input = container.getInput ();
+		if (input.isKeyDown (Input.KEY_ESCAPE)) {
 			container.exit ();
-		} else if (appInput.isKeyDown (AppInput.KEY_ENTER)) {
-			Pause pause = (Pause) game.getState (AppGame.PAGES_PAUSE);
-			pause.setPreviousID (AppGame.PAGES_WELCOME);
-			pause.setNextID (AppGame.TEST_WORLD);
-			appGame.enterState (AppGame.TEST_WORLD, new FadeOutTransition (), new FadeInTransition ());
+		} else if (input.isKeyDown (Input.KEY_ENTER)) {
+			game.enterState (1, new FadeOutTransition (), new FadeInTransition ());
 		}
 	}
 
