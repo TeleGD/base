@@ -13,9 +13,6 @@ public class World extends BasicGameState {
 	private int ID;
 	private int state;
 
-	private int width;
-	private int height;
-
 	public World (int ID) {
 		this.ID = ID;
 		this.state = -1;
@@ -29,8 +26,6 @@ public class World extends BasicGameState {
 	@Override
 	public void init (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au chargement du programme */
-		this.width = container.getWidth ();
-		this.height = container.getHeight ();
 	}
 
 	@Override
