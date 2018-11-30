@@ -24,7 +24,6 @@ public class Choice extends AppMenu {
 		this.setMenu (Arrays.asList (new MenuItem [] {
 			new MenuItem ("Test") {
 				public void itemSelected () {
-					((test.World) game.getState (3)).setState (0);
 					game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},

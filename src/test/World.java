@@ -15,7 +15,7 @@ public class World extends BasicGameState {
 
 	public World (int ID) {
 		this.ID = ID;
-		this.state = -1;
+		this.state = 0;
 	}
 
 	@Override
@@ -45,6 +45,7 @@ public class World extends BasicGameState {
 			this.pause (container, game);
 		} else if (this.state == 3) {
 			this.stop (container, game);
+			this.state = 0; // TODO: remove
 		}
 	}
 
