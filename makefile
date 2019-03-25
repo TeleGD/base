@@ -16,6 +16,9 @@ archive:
 	chmod u+x zip/main.bat
 	zip main.zip zip/*
 
+exec:
+	java -Djava.library.path=zip -jar zip/main.jar
+
 clean:
 	rm -r -f bin/*
 	rm -r -f zip/*
