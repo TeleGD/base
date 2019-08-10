@@ -16,7 +16,7 @@ public final class Main {
 		int height = 720;
 		boolean fullscreen = false;
 		String request = "Voulez-vous jouer en plein écran ?";
-		Object [] options = {
+		String [] options = {
 			"Oui",
 			"Non"
 		};
@@ -30,30 +30,31 @@ public final class Main {
 			options,
 			options [0]
 		);
-		if (returnValue != -1) {
-			if (returnValue == 0) {
-				DisplayMode display = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ().getDisplayMode ();
-				width = display.getWidth ();
-				height = display.getHeight ();
-				fullscreen = true;
-			}
-			StateBasedGame game = new StateBasedGame (title) {
-
-				@Override
-				public void initStatesList (GameContainer container) {
-					this.addState (new pages.Welcome (0));
-					this.addState (new pages.Choice (1));
-					this.addState (new pages.Pause (2));
-					this.addState (new test.World (3));
-				}
-
-			};
-			AppGameContainer container = new AppGameContainer (game, width, height, fullscreen);
-			container.setTargetFrameRate (60);
-			container.setVSync (true);
-			container.setShowFPS (false);
-			container.start ();
+		if (returnValue == -1) {
+			return;
 		}
+		if (returnValue == 0) {
+			DisplayMode display = GraphicsEnvironment.getLocalGraphicsEnvironment ().getDefaultScreenDevice ().getDisplayMode ();
+			width = display.getWidth ();
+			height = display.getHeight ();
+			fullscreen = true;
+		}
+		StateBasedGame game = new StateBasedGame (title) {
+
+			@Override
+			public void initStatesList (GameContainer container) {
+				this.addState (new pages.Welcome (0));
+				this.addState (new pages.Choice (1));
+				this.addState (new pages.Pause (2));
+				this.addState (new test.World (3));
+			}
+
+		};
+		AppGameContainer container = new AppGameContainer (game, width, height, fullscreen);
+		container.setTargetFrameRate (60);
+		container.setVSync (true);
+		container.setShowFPS (false);
+		container.start ();
 	}
 
 }
