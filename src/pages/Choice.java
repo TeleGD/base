@@ -20,6 +20,7 @@ public class Choice extends AppMenu {
 	public void init (GameContainer container, StateBasedGame game) {
 		super.initSize (container, game, 600, 400);
 		super.init (container, game);
+		this.setTitle ("Choix");
 		this.setSubtitle ("Sans sous-titre");
 		this.setMenu (Arrays.asList (new MenuItem [] {
 			new MenuItem ("Test") {
@@ -33,7 +34,6 @@ public class Choice extends AppMenu {
 				}
 			}
 		}));
-		this.setTitle ("Choix");
 		this.setHint ("SELECT A GAME");
 	}
 
