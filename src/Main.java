@@ -1,6 +1,8 @@
 import java.awt.DisplayMode;
 import java.awt.GraphicsEnvironment;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.newdawn.slick.AppGameContainer;
@@ -20,8 +22,10 @@ public final class Main {
 			"Oui",
 			"Non"
 		};
+		JFrame frame = new JFrame();
+		frame.setIconImage(new ImageIcon(System.class.getResource("/images/icon.png")).getImage());
 		int returnValue = JOptionPane.showOptionDialog(
-			null,
+			frame,
 			request,
 			title,
 			JOptionPane.YES_NO_OPTION,
@@ -30,6 +34,7 @@ public final class Main {
 			options,
 			options[0]
 		);
+		frame.dispose();
 		if (returnValue == -1) {
 			return;
 		}
@@ -46,7 +51,7 @@ public final class Main {
 				this.addState(new pages.Welcome(0));
 				this.addState(new pages.Choice(1));
 				this.addState(new pages.Pause(2));
-				this.addState(new test.World(3));
+				this.addState(new games.test.World(3));
 			}
 
 		};
@@ -54,6 +59,7 @@ public final class Main {
 		container.setTargetFrameRate(60);
 		container.setVSync(true);
 		container.setShowFPS(false);
+		container.setIcon(System.class.getResource("/images/icon.png").getPath());
 		container.start();
 	}
 

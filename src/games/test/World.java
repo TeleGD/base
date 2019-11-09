@@ -1,4 +1,4 @@
-package test;
+package games.test;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
