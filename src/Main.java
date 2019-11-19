@@ -1,7 +1,6 @@
 import java.awt.DisplayMode;
 import java.awt.GraphicsEnvironment;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -9,6 +8,8 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import app.AppLoader;
 
 public final class Main {
 
@@ -18,12 +19,12 @@ public final class Main {
 		int height = 720;
 		boolean fullscreen = false;
 		String request = "Voulez-vous jouer en plein écran ?";
-		String[] options = {
+		String[] options = new String[] {
 			"Oui",
 			"Non"
 		};
 		JFrame frame = new JFrame();
-		frame.setIconImage(new ImageIcon(System.class.getResource("/images/icon.png")).getImage());
+		frame.setIconImage(AppLoader.loadIcon("/images/icon.png").getImage());
 		int returnValue = JOptionPane.showOptionDialog(
 			frame,
 			request,
@@ -59,7 +60,7 @@ public final class Main {
 		container.setTargetFrameRate(60);
 		container.setVSync(true);
 		container.setShowFPS(false);
-		container.setIcon(System.class.getResource("/images/icon.png").getPath());
+		container.setIcon(AppLoader.resolve("/images/icon.png"));
 		container.start();
 	}
 
