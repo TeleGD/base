@@ -57,7 +57,6 @@ public class AppLoader {
 				}
 			}
 		}
-		System.out.println(path);
 		return path;
 	}
 
